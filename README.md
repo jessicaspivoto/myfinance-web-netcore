@@ -4,3 +4,7 @@ MyFiance - Projeto do Curso de pós-Graduação em Engenharia de Software da PUC
 
 # DER - Diagrama de Entidade e Relacionamento
 <img src="docs/DER.PNG">
+
+
+# Run the application using Hot reload 
+``dotnet watch run``

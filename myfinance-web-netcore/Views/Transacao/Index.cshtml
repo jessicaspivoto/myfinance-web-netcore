@@ -1,0 +1,34 @@
+@{
+    ViewData["Title"] = "Transações Financeiras";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<a role="button" href="/Transacao/Cadastro" type="button" class="btn btn-primary btn-lg">Registrar Transação</a>
+
+<hr />
+
+<table class="table table-white table-striped">
+    <thead>
+        <tr>
+            <th col">Id</th>
+            <th col">Descrição</th>
+            <th col">Tipo</th>
+            <th col"></th>
+            <th col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Combustivel</td>
+            <td>D</td>
+            <td>
+                <button type="button" class="btn btn-outline-warning">Editar</button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-outline-danger">Excluir</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -21,7 +21,7 @@
 
         <div class="mb-3">
             <label class="form-label">Item Plano de Conta</label>
-            @* @Html.DropDownListFor(m => m.PlanoContaId, Model.PlanoContas, new{@class="form-select"}) *@
+            @Html.DropDownListFor(m => m.PlanoContaId, Model.PlanoContas, new{@class="form-select"})
         </div>
 
         <div class="mb-3">
@@ -30,9 +30,8 @@
         </div>
 
         <div>
+            <button type="submit" class="btn btn-primary">Salvar</button>
             <a role="button" href="/Transacao/Index" type="button" class="btn btn-secondary">Cancelar</a>
-            <button type="submit" class="btn btn-primary">Enviar</button>
         </div>
-
     </div>
 </form>

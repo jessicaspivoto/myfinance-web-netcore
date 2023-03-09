@@ -29,7 +29,6 @@ namespace myfinance_web_netcore.Domain.Services
                 };
                 result.Add(itemPlanoConta);
             }
-
             return result;
         }
         public void Salvar(PlanoContaModel model)
@@ -67,8 +66,7 @@ namespace myfinance_web_netcore.Domain.Services
         }
         public void Excluir(int id)
         {
-            var dbSet = _dbContext.PlanoConta;
-            var item = dbSet.Where(x => x.Id == id).First();
+           var item = _dbContext.PlanoConta.Where(x => x.Id == id).First();
 
             _dbContext.Attach(item);
             _dbContext.Remove(item);

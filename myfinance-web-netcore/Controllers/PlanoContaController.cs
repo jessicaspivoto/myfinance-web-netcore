@@ -47,9 +47,9 @@ namespace myfinance_web_netcore.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpDelete]
+        [HttpGet]
         [Route("Excluir/{id}")]
-        public IActionResult Exclusao(int id)
+        public IActionResult Excluir(int id)
         {
             _planoContaService.Excluir(id);
             return RedirectToAction("Index");

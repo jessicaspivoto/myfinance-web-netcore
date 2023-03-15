@@ -24,9 +24,9 @@ It is allowed through a functional requirement for the user to register a transa
 # Payment Method overview
 It is allowed through an extra functional requirement for the user to indicate the payment type when the transaction is an "Expense". The application must allow the selection of the following types: Cash, Debit, Pix, Credit and Payment Slip.
 
+~~~sql
 1- Create new table in Database:
 
-~~~sql
  create table metodopagamento(
     id int identity(1,1) not null,
     tipo varchar(50) not null,
@@ -34,7 +34,7 @@ It is allowed through an extra functional requirement for the user to indicate t
 
 
 2- Populate table with types: Cash, Debit, Pix, Credit and Payment Slip.
-~~~sql
+
  insert into metodopagamento
     (tipo)
     values
@@ -45,9 +45,9 @@ It is allowed through an extra functional requirement for the user to indicate t
       ('Boleto'),
 
 3- Create a FK into new table pontind to "metodoPagamento(Id)"
-~~~sql
+
   ALTER TABLE transacao
   ADD metodopagamentoid INT
   REFERENCES metodopagamento(id);
-~~~~
+
 

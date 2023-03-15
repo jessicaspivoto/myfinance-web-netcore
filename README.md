@@ -34,7 +34,7 @@ It is allowed through an extra functional requirement for the user to indicate t
 
 
 2- Populate table with types: Cash, Debit, Pix, Credit and Payment Slip.
-~~~sql
+
  insert into metodopagamento
     (tipo)
     values
@@ -46,7 +46,6 @@ It is allowed through an extra functional requirement for the user to indicate t
 
 
 3- Create a FK into new table pontind to "metodoPagamento(Id)"
-~~~sql
   ALTER TABLE transacao
   ADD metodopagamentoid INT
   REFERENCES metodopagamento(id);

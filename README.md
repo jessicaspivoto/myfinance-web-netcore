@@ -43,12 +43,12 @@ It is allowed through an extra functional requirement for the user to indicate t
       ('Débito'),
       ('Pix'),
       ('Boleto'),
-~~~
+
 
 3- Create a FK into new table pontind to "metodoPagamento(Id)"
 ~~~sql
   ALTER TABLE transacao
   ADD metodopagamentoid INT
   REFERENCES metodopagamento(id);
-~~~
+
 

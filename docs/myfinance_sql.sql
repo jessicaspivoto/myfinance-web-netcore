@@ -3,32 +3,45 @@ CREATE DATABASE myfinance
 use myfinance
 
 create table planoconta(
-id int identity(1,1) not null,
-descricao varchar(50) not null,
-tipo char(1) not null,
-primary key (id)
+	id int identity(1,1) not null,
+	descricao varchar(50) not null,
+	tipo char(1) not null,
+	primary key (id)
 );
 
 create table transacao(
-id int identity(1,1) not null,
-data datetime not null,
-valor decimal(9,2),
-historico text,
-planocontaid int not null,
-primary key(id),
-foreign key(planocontaid) references planoconta(id)
+	id int identity(1,1) not null,
+	data datetime not null,
+	valor decimal(9,2),
+	historico text,
+	planocontaid int not null,
+	primary key(id),
+	foreign key(planocontaid) references planoconta(id)
 );
 
+create table metodopagamento(
+    id int identity(1,1) not null,
+    tipo varchar(50) not null,
+);
+
+ALTER TABLE transacao
+	ADD metodopagamentoid INT
+	REFERENCES metodopagamento(id);
+
+truncate table transacao
+alter table transacao add constraint pk_transacao_id primary key(id) 
+  
 SELECT * FROM planoconta
+SELECT * FROM transacao
 
 insert into planoconta(descricao, tipo)
-values('Dividendos de Ações', 'R')
+values('Dividendos de Aï¿½ï¿½es', 'R')
 
 insert into planoconta(descricao, tipo)
-values('Salário', 'R')
+values('Salï¿½rio', 'R')
 
 insert into planoconta(descricao, tipo)
-values('Combustível', 'D')
+values('Combustï¿½vel', 'D')
 
 insert into transacao(data, valor, historico, planocontaid)
 values('20230215 07:00', 10.50, 'Americanas', 2)
@@ -36,18 +49,23 @@ values('20230215 07:00', 10.50, 'Americanas', 2)
 insert into transacao(data, valor, historico, planocontaid)
 values('20230205 07:00', 345.67, 'Gasolina Blazer', 2)
 
-SELECT * FROM transacao
+insert into metodopagamento(tipo)
+values('Dinheiro'),
+    ('Crï¿½dito'),
+    ('Dï¿½bito'),
+    ('Pix'),
+    ('Boleto'),
 
---Todas as transações de Despesas no mês de janeiro
+--Todas as transaï¿½ï¿½es de Despesas no mï¿½s de janeiro
 select t.data, t.valor, p.descricao 
-from transacao t
-inner join planoconta p on t.planocontaid = p.id
-where p.tipo = 'D' and t.data >='20230101' and t.data <='20230131'
+	from transacao t
+	inner join planoconta p on t.planocontaid = p.id
+	where p.tipo = 'D' and t.data >='20230101' and t.data <='20230131'
 
---Todas as transações maiores que 200 reais 
+--Todas as transaï¿½ï¿½es maiores que 200 reais 
 select * from transacao where valor > 200
 
---Somatorio de transações de receitas e despesas de todo o periodo
+--Somatorio de transaï¿½ï¿½es de receitas e despesas de todo o periodo
 select 
 	d.total_despesas, 
 	r.total_receitas 
@@ -59,7 +77,7 @@ from
 	from transacao t join planoconta p on p.id = t.planocontaid
 	where p.tipo = 'R') as r
 	
---Média de transações por mês
+--Mï¿½dia de transaï¿½ï¿½es por mï¿½s
 select 
 avg(valor) as media, 
 month(data) as mes
@@ -68,7 +86,7 @@ group by month(data)
 
 select year(getdate())
 
---Transações e seus itens de plano de contas
+--Transaï¿½ï¿½es e seus itens de plano de contas
 select t.id, t.data, t.valor, p.descricao, p.tipo
 from transacao t join planoconta p 
 on t.planocontaid = p.id
@@ -79,3 +97,4 @@ on t.planocontaid = p.id
 --DDL - Data Definition Language (CREATE, ALTER, DROP)
 --DCL - Data Create Language (GRANT, REVOKE)
 --DTL - Data Transaction Language (BEGIN, COMMIT, ROLLBACK)
+

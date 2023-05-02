@@ -1,31 +1,31 @@
 # myfinance-web-netcore
-The application was designed with the purpose of facilitating financial control.
+O aplicativo foi desenvolvido com o objetivo de facilitar o controle financeiro.
 
 # DER - Diagrama de Entidade e Relacionamento
 <img src="docs/DER.PNG">
 
-# Build the application 
+# Build 
 ``dotnet build``
 
-# Run the application using Hot reload 
+# Run 
 ``dotnet watch run``
 
 
-# Account overview
-It is allowed through a functional requirement for the user to register a chart of accounts, as well as to view the existing charts of accounts. Information such as id, description, and type, which can be Expense or Revenue, can be viewed. The user also has the ability to edit a chart of account or remove it through the corresponding buttons.
+# Plano de Contas
+É permitido, por requisito funcional, que o usuário cadastre um plano de contas, bem como a visualização dos planos de contas existentes. Informações como id, descrição e tipo, que podem ser Despesas ou Receitas, podem ser visualizadas. O usuário também tem a possibilidade de editar um plano de contas ou removê-lo através dos botões correspondentes.
 <img src="docs/CriarItemPlanoDeConta.PNG">
 <img src="docs/PlanoDeContas.PNG">
 
-# Transaction overview
-It is allowed through a functional requirement for the user to register a transaction, as well as to view existing transactions. Information such as id, date, description, amount, type of operation which can be Expense or Revenue, and the Chart of Account to which it is linked can be viewed. The user also has the ability to edit a financial transaction or remove it through the corresponding buttons.
+# Transações
+É permitido através de um requisito funcional que o usuário registre uma transação, bem como visualize as transações existentes. Podem ser visualizadas informações como id, data, descrição, valor, tipo de operação que pode ser Despesa ou Receita, e o Plano de Conta ao qual está vinculado. O usuário também tem a possibilidade de editar uma transação financeira ou removê-la através dos botões correspondentes.
 <img src="docs/RegistrarTransacaoFinanceira.PNG">
 <img src="docs/TransacoesFinanceiras.PNG">
 
-# Payment Method overview
-It is allowed through an extra functional requirement for the user to indicate the payment type when the transaction is an "Expense". The application must allow the selection of the following types: Cash, Debit, Pix, Credit and Payment Slip.
+# Método de Pagamento
+É permitido através de um requisito funcional extra que o usuário indique o tipo de pagamento quando a transação for uma "Despesa". O aplicativo deve permitir a seleção das seguintes modalidades: Dinheiro, Débito, Pix, Crédito e Boleto.
 
 ~~~sql
-1- Create new table in Database:
+1- Criar uma nova tabela:
 
  create table metodopagamento(
     id int identity(1,1) not null,
@@ -33,7 +33,7 @@ It is allowed through an extra functional requirement for the user to indicate t
   );
 
 
-2- Populate table with types: Cash, Debit, Pix, Credit and Payment Slip.
+2- Popular com os tipos: Dinheiro, Crédito, Débito, Pix e Boleto.
 
  insert into metodopagamento
     (tipo)
@@ -44,7 +44,7 @@ It is allowed through an extra functional requirement for the user to indicate t
       ('Pix'),
       ('Boleto'),
 
-3- Create a FK into new table pontind to "metodoPagamento(Id)"
+3- Criar uma FK dentro da nova tabela e apontar para "metodoPagamento(Id)"
 
   ALTER TABLE transacao
   ADD metodopagamentoid INT
